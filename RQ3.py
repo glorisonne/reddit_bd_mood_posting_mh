@@ -43,7 +43,7 @@ n_users_incomplete_cases = len(users)
 users = users[users.gender.notna() & users.avg_posting_age.notna()]
 
 print("Selected %d users for RQ 3 (%d before selecting only users with age+gender\n"
-      "%d posted only in non-MH subreddits)" %(len(users), n_users_incomplete_cases, len(users[users.DV == 0])))
+      "%d posted only in non-MH subreddits)" %(len(users), n_users_incomplete_cases, len(users[users[DV] == 0])))
 
 users[["id", DV] + c.liwc + c.controls].to_csv(c.data + "users_rq3%s.csv" %suffix)
 
@@ -52,7 +52,7 @@ users_posted_MH = users[users.posted_MH == 1]
 users_not_posted_MH = users[users.posted_MH == 0]
 
 for var in c.liwc:
-    p, sig, effect_size, effect_size_interpretation, test_name = stats.mean_comparison_test(users_posted_MH[var],
+    p, sig, effect_size, effect_size_interpretation, test_name = u.mean_comparison_test(users_posted_MH[var],
                                                     users_not_posted_MH[var], n_comparisons=5, dependent=False)
     print("%s;%.2f;%.2f;%.2f;%.2f;%.4f;%s;%.2f;%s" %(var,
         users_posted_MH[var].mean(), users_posted_MH[var].std(),
