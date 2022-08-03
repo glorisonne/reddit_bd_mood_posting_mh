@@ -8,13 +8,13 @@ import RQ2 as rq2
 
 DV = "posted_MH"
 min_posts = 4
-suffix = "" # "-new" # "-new", ""
+suffix = "-new" # "-new" # "-new", ""
 
 posts = pd.read_pickle(c.data + "posts_LIWC.pkl")
 posts = u.identify_mh_subreddits(posts, suffix=suffix)
 
 # only posts with at least 25 words
-# posts = posts[posts.WC >= c.min_words_per_post]
+posts = posts[posts.WC >= c.min_words_per_post]
 posts = posts.groupby("user_id").filter(lambda x: x[~x.in_mh_subreddit].WC.sum() > 24)
 
 # posted_MH: at least min_posts in both MH and non-MH subreddits
