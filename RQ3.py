@@ -40,7 +40,7 @@ users[DV] = np.where(users.id.isin(posts[posts[DV]].user_id.unique()), 1, 0)
 
 # complete cases only (age + gender)
 n_users_incomplete_cases = len(users)
-users = users[users.gender.notna() & users.average_posting_age.notna()]
+users = users[users.gender.notna() & users.avg_posting_age.notna()]
 
 print("Selected %d users for RQ 3 (%d before selecting only users with age+gender\n"
       "%d posted only in non-MH subreddits)" %(len(users), n_users_incomplete_cases, len(users[users.DV == 0])))
