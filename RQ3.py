@@ -7,8 +7,10 @@ import util as u
 import RQ2 as rq2
 
 def select_users(DV, min_posts):
-    posts = pd.read_pickle(c.data + "posts_LIWC.pkl")
-    posts = u.identify_mh_subreddits(posts)
+    suffix = u.get_suffix()
+    print("Reading posts from %s" % (c.data + "posts_LIWC%s.csv" % suffix))
+    posts = pd.read_pickle(c.data + "posts_LIWC%s.pkl" %suffix)
+    print("Read in %d posts by %d users" % (len(posts), posts.user_id.nunique()))
 
     # only posts with at least 25 words
     # posts = posts[posts.WC >= c.min_words_per_post]

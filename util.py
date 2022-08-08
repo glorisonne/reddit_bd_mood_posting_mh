@@ -15,6 +15,11 @@ def identify_mh_subreddits(posts):
                                                         len(mh_subreddits)))
     return posts
 
+def get_suffix():
+    suffix = ""
+    if len(sys.argv) == 2:
+        suffix = "_demo"
+    return suffix
 
 def mean_comparison_test(series_left, series_right, n_comparisons, dependent):
     """

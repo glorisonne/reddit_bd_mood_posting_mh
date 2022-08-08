@@ -39,8 +39,10 @@ def compare_user_means(user_means):
 
 
 if __name__ == "__main__":
-    posts = pd.read_pickle(c.data + "posts_LIWC.pkl")
-    posts = u.identify_mh_subreddits(posts)
+    suffix = u.get_suffix()
+    print("Reading posts from %s" % (c.data + "posts_LIWC%s.csv" % suffix))
+    posts = pd.read_pickle(c.data + "posts_LIWC%s.pkl" %suffix)
+    print("Read in %d posts by %d users" % (len(posts), posts.user_id.nunique()))
 
     min_posts = 4
     posts = select_posts_by_users_min_posts(posts, min_posts)
