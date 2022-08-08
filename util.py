@@ -5,20 +5,10 @@ import numpy as np
 
 import config as c
 
-def read_mh_subreddits(suffix):
-    mh_subreddits = pd.read_csv(c.data + "mental-health-subreddits%s.txt" %suffix, header=None,
-                                names=["MH_subreddits"]).MH_subreddits
 
-    if suffix == "":
-        bd_subreddits = pd.read_csv(c.data + "bipolar-disorder-subreddits.txt", header=None,
-                                    names=["BD_subreddits"]).BD_subreddits
-        mh_subreddits = pd.concat([mh_subreddits, bd_subreddits])
-    return mh_subreddits
-
-
-def identify_mh_subreddits(posts, suffix=""):
-    # ToDo change this to reading the MH subreddits from subreddit_topics.csv eventually (or just include in_mh_subreddit as variable in posts.pkl)
-    mh_subreddits = read_mh_subreddits(suffix)
+def identify_mh_subreddits(posts):
+    subreddits = pd.read_csv(c.data + "subreddit_topics.csv")
+    mh_subreddits = subreddits[subreddits["third level"] == "Mental Health"].subreddit
     posts["in_mh_subreddit"] = posts.subreddit_name.str.lower().isin(mh_subreddits.str.lower())
     print("%d posts by %d users in %d MH subreddits" % (len(posts[posts.in_mh_subreddit]),
                                                         posts[posts.in_mh_subreddit].user_id.nunique(),
@@ -63,7 +53,7 @@ def mean_comparison_test(series_left, series_right, n_comparisons, dependent):
 
     effect_size_interpretation = interpret_effect_size(effect_size)
 
-    return result.pvalue, is_significant(result.pvalue,
+    return result.pvalue * n_comparisons, is_significant(result.pvalue,
                                          n_comparisons), effect_size, effect_size_interpretation, test_name
 
 def cohens_d(group1, group2, statistics):

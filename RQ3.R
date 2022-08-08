@@ -1,24 +1,21 @@
 # ToDo check which libraries do need and for what
-library(car)
-library(ggplot2)
-library(gridExtra)
+library(car) #vif function for collinearity checks
+#library(ggplot2)
+#library(gridExtra)
 library(languageR) # collinearity checks
-library(Hmisc) # variable hierarchical clustering
-library(matrixStats) # SD for multiple columns
+#library(Hmisc) # variable hierarchical clustering
+#library(matrixStats) # SD for multiple columns
 # install.packages("caret")
-library(caret)
+library(caret) #confusionMatrix function for accuracy evaluation
 # library(mdscore) # log ratio test for glm https://rdrr.io/cran/mdscore/man/lr.test.html (lr.test yields almost same results as anova with Chisq)
-library(flexmix) # BIC function for glm
-
-data_folder = "data/" # "C:/Users/glori/Documents/Persönliches/#PhD_local/data/"
-
-#results_folder = 'C:/Users/glori/OneDrive - Lancaster University/PhD_Glorianna/research/social-media-research/results/RQ2/'
-#setwd(results_folder)
+#library(flexmix) # BIC function for glm
+library(ROCR) # precision-recall curve for accuracy evaluation
 
 # references
 # Field: Field, A., Miles, J., & Field, Z. (2012). Discovering Statistics Using R. SAGE Publications Inc.
 
-dataset = "users_rq3.csv" # "users_rq3-new.csv" # "users_rq3-25wtotal.csv"
+data_folder = "data/" # "C:/Users/glori/Documents/Persönliches/#PhD_local/data/"
+dataset = "users_rq3-new.csv" # "users_rq3.csv", "users_rq3-new.csv" # "users_rq3-25wtotal.csv"
 
 df = read.csv(paste(data_folder, dataset, sep=""), fileEncoding='UTF-8-BOM', sep=",")
 # number of cases
@@ -83,7 +80,7 @@ corrs <- cor(df[, c(liwc, controls)], df[, c(liwc, controls)], use = "pairwise.c
 print(corrs)
 
 # collinearity of controls + LIWC predictors
-collin.fnc(df[, c(4:9)])$cnumber
+collin.fnc(df[, c(4:12)])$cnumber
 
 # multicollinearity?
 multicollinearity_checks <- function(model){
@@ -116,21 +113,22 @@ model.liwc_w_controls_log_interactions <- glm(posted_MH ~ avg_posting_age + gend
                                               + log_posemo + log_anx + log_anger + log_sad + log_i, 
                                               data = df, family = binomial(link="logit"))
 summary(model.liwc_w_controls_log_interactions)
+logisticPseudoR2s(model.liwc_w_controls_log_interactions)
 
 ## model accuracy
 # confusion matrix
+df$predict_p_posted_MH = predict(model.liwc_w_controls, type = "response")
 df$predict_posted_MH = ifelse(df$predict_p_posted_MH >= 0.5, 1, 0)
 confusionMatrix(as.factor(df$predict_posted_MH), as.factor(df$posted_MH))
 
 # precision-recall curve
 # ROC curve https://stats.stackexchange.com/questions/6067/does-an-unbalanced-sample-matter-when-doing-logistic-regression
-library(ROCR)
 pred <- prediction(df$predict_p_posted_MH, df$posted_MH)
 perf <- performance(pred, "prec", "rec")
 plot(perf, colorize=TRUE)
 
 ## gender-balanced dataset
-dataset = "users_rq3-gender-balanced.csv"
+dataset = "users_rq3-new_gender_balanced.csv"
 df = read.csv(paste(data_folder, dataset, sep=""), fileEncoding='UTF-8-BOM', sep=",")
 
 # number of cases
@@ -160,4 +158,9 @@ logisticPseudoR2s(model.liwc_w_controls)
 confint.default(model.liwc_w_controls)
 exp(model.liwc_w_controls$coefficients)
 exp(confint(model.liwc_w_controls))
+
+## Model accuracy
+df$predict_p_posted_MH = predict(model.liwc_w_controls, type = "response")
+df$predict_posted_MH = ifelse(df$predict_p_posted_MH >= 0.5, 1, 0)
+confusionMatrix(as.factor(df$predict_posted_MH), as.factor(df$posted_MH))
 

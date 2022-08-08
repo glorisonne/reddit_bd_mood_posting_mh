@@ -9,7 +9,7 @@ def select_posts_by_users_min_posts(posts, min_posts):
     # select users with at least 4 MH and non-MH subreddit posts each
     n_users = posts.user_id.nunique()
 
-    # posts = posts[posts.WC >= c.min_words_per_post]
+    posts = posts[posts.WC >= c.min_words_per_post]
     posts = posts.groupby("user_id").filter(lambda x: (len(x[~x.in_mh_subreddit]) >= min_posts) &
                                                       (len(x[x.in_mh_subreddit]) >= min_posts))
 
@@ -40,7 +40,7 @@ def compare_user_means(user_means):
 
 if __name__ == "__main__":
     posts = pd.read_pickle(c.data + "posts_LIWC.pkl")
-    posts = u.identify_mh_subreddits(posts, suffix="-new")
+    posts = u.identify_mh_subreddits(posts)
 
     min_posts = 4
     posts = select_posts_by_users_min_posts(posts, min_posts)
