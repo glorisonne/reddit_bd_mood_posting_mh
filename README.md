@@ -26,33 +26,35 @@ Among these, the 37 BD subreddits are identified by the category label "bipolar"
 
 ## RQ1: What proportion of Reddit users with a BD diagnosis posts in MH and non-MH subreddits?
 
-python RQ1.py [demo]
+  python RQ1.py [demo]
 
 ### Expected output
 
-At least 1 (1 for both MH and non-MH) post(s):
-1369 users (7.0%) only posted in MH subreddits
-4666 users (23.7%) only posted in non-MH subreddits
-13650 users (69.3%) posted both in MH and non-MH subreddits
-At least 8 (4 for both MH and non-MH) post(s):
-364 users (1.8%) only posted in MH subreddits
-3650 users (18.5%) only posted in non-MH subreddits
+> At least 1 (1 for both MH and non-MH) post(s):<br>
+1369 users (7.0%) only posted in MH subreddits<br>
+4666 users (23.7%) only posted in non-MH subreddits<br>
+13650 users (69.3%) posted both in MH and non-MH subreddits<br>
+At least 8 (4 for both MH and non-MH) post(s):<br>
+364 users (1.8%) only posted in MH subreddits<br>
+3650 users (18.5%) only posted in non-MH subreddits<br>
 10770 users (54.7%) posted both in MH and non-MH subreddits
-
-
 
 ## RQ2: What differences exist in the emotions that Reddit users with a BD diagnosis express in MH and non-MH subreddit posts?
 
-python RQ2.py [demo]
+<python>
+  python RQ2.py [demo]
+</python>
 
 ### Expected output
+><br>
 
 ## RQ3: How does trait mood differ between users who post in MH subreddits and those who only post in non-MH subreddits?
 
-Select users:
+### Select users:
 python RQ3.py [demo]
 
-Logistic regression model + analyses:
+### Logistic regression model + analyses:
 Rscript RQ3.R
 
 ### Expected output
+><br>
