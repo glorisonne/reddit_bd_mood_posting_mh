@@ -1,9 +1,7 @@
 # RQ2: What differences exist in the emotions that Reddit users with a BD diagnosis express in MH and non-MH subreddit posts?
 import pandas as pd
-import math
 import config as c
 import util as u
-
 
 def select_posts_by_users_min_posts(posts, min_posts):
     # select users with at least 4 MH and non-MH subreddit posts each
@@ -23,7 +21,7 @@ def select_posts_by_users_min_posts(posts, min_posts):
 def compare_user_means(user_means):
     # run dependent t-tests
     print("variable; mean MH posts; SD MH posts; mean non-MH posts; SD non-MH posts;p; p<0.001?; Cohen's d;\
-    Cohen's d interpretation")
+Cohen's d interpretation")
     for var in c.liwc:
         p, sig, effect_size, effect_size_interpretation, test_name = u.mean_comparison_test(user_means["%s_MH" % var],
                                                                                             user_means[
@@ -40,8 +38,9 @@ def compare_user_means(user_means):
 
 if __name__ == "__main__":
     suffix = u.get_suffix()
+
     print("Reading posts from %s" % (c.data + "posts_LIWC%s.csv" % suffix))
-    posts = pd.read_pickle(c.data + "posts_LIWC%s.pkl" %suffix)
+    posts = pd.read_csv(c.data + "posts_LIWC%s.csv" %suffix)
     print("Read in %d posts by %d users" % (len(posts), posts.user_id.nunique()))
 
     min_posts = 4

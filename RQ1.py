@@ -1,7 +1,6 @@
 # RQ1: What proportion of Reddit users with a BD diagnosis posts in MH and non-MH subreddits?
 import pandas as pd
 import math
-import sys
 
 import config as c
 import util as u
