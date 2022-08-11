@@ -27,7 +27,7 @@ Among these, the 37 BD subreddits are identified by the category label "bipolar"
 
   python RQ1.py [demo]
 
-### Expected output
+### Expected output (with actual input data, not in demo mode)
 
 > At least 1 (1 for both MH and non-MH) post(s):<br>
 1369 users (7.0%) only posted in MH subreddits<br>
@@ -68,33 +68,33 @@ The gender-balanced users are selected based on user_ids_rq3_gender_balanced.csv
 
 >Reading posts from data/posts_LIWC.csv<br>
 Read in 21407593 posts by 19685 users<br>
-Selected 9821 users (54.2%) with 6493626 posts (11.4% in MH subreddits) with at least 4 posts with at least 25 words in MH and non-MH subreddits<br>
-0 posts in MH subreddits and at least 4 posts in non-MH subreddits: 3650<br>
-Selected 10202 users for RQ 3 (13471 before selecting only users with age+gender<br>
-2356 posted only in non-MH subreddits)<br>
-avg_posting_age;29.22;9.31;29.41;9.80;3.5170;False;-0.02;No effect;independent t<br>
+Selected 9821 users (49.9%) with 14642641 posts (7.7% in MH subreddits) with at least 4 posts with at least 25 words in MH and non-MH subreddits<br>
+0 posts in MH subreddits and at least 8 posts in non-MH subreddits: 3369
+Selected 10158 users for RQ 3 (13190 before selecting only users with age+gender, 2312 posted only in non-MH subreddits)<br>
+
+avg_posting_age;29.22;9.31;29.47;9.82;2.2809;False;-0.03;No effect;independent t<br>
 gender;0.40;0.49;0.61;0.49;0.0000;True;-0.43;Small;independent t<br>
-active_days;1292.08;883.97;1114.15;890.21;0.0000;True;0.20;Small;independent t<br>
-activity;1.44;2.52;1.84;4.76;0.0010;True;-0.16;Very small;Welchs-t<br>
-posemo;3.63;0.88;5.62;2.40;0.0000;True;-2.26;Huge;Welchs-t<br>
-anx;0.36;0.19;0.30;0.18;0.0000;True;0.35;Small;Welchs-t<br>
-anger;0.79;0.41;1.09;0.63;0.0000;True;-0.74;Medium;Welchs-t<br>
-sad;0.44;0.21;0.44;0.24;4.9625;False;0.01;No effect;independent t<br>
-i;6.35;1.86;5.57;1.81;0.0000;True;0.42;Small;independent t<br>
+active_days;1292.08;883.97;1130.44;889.61;0.0000;True;0.18;Very small;independent t<br>
+activity;1.44;2.52;1.85;4.79;0.0008;True;-0.16;Very small;Welchs-t<br>
+posemo;6.05;2.55;5.61;2.35;0.0000;True;0.17;Very small;Welchs-t<br>
+anx;0.33;0.21;0.30;0.16;0.0000;True;0.16;Very small;independent t<br>
+anger;1.00;0.60;1.09;0.62;0.0000;True;-0.15;Very small;independent t<br>
+sad;0.47;0.25;0.43;0.22;0.0000;True;0.14;Very small;Welchs-t<br>
+i;5.90;1.67;5.54;1.75;0.0000;True;0.21;Small;independent t<br>
 Outcome variable posted_MH by gender before gender balancing<br>
 posted_MH  gender<br>
-0          1.0       1446<br>
-           0.0        910<br>
+0          1.0       1416<br>
+           0.0        896<br>
 1          0.0       4696<br>
            1.0       3150<br>
 Name: gender, dtype: int64<br>
 Outcome variable posted_MH by gender after gender balancing<br>
 posted_MH  gender<br>
-0          0.0        910<br>
-           1.0        910<br>
+0          0.0        896<br>
+           1.0        896<br>
 1          0.0       3150<br>
            1.0       3150<br>
-Name: gender, dtype: int64
+Name: gender, dtype: int64<br>
 
 ### Logistic regression model + analyses:
 <R>

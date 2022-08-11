@@ -47,7 +47,7 @@ def select_users(DV, min_posts, suffix):
     users = users[users.gender.notna() & users.avg_posting_age.notna()]
 
     print("Selected %d users for RQ 3 (%d before selecting only users with age+gender, %d posted"
-"only in non-MH subreddits)" %(len(users), n_users_incomplete_cases, len(users[users[DV] == 0])))
+" only in non-MH subreddits\n)" %(len(users), n_users_incomplete_cases, len(users[users[DV] == 0])))
 
     users[["id", DV] + c.liwc + c.controls].to_csv(c.data + "users_rq3%s.csv" %suffix)
     return users
@@ -102,10 +102,10 @@ if __name__ == "__main__":
     DV = "posted_MH"
     min_posts = 4
     suffix = u.get_suffix()
-    # users = select_users(DV, min_posts, suffix)
-    users = pd.read_csv(c.data + "users_rq3_corrected.csv")
+    users = select_users(DV, min_posts, suffix)
+    users = pd.read_csv(c.data + "users_rq3.csv")
     descriptive_statistics(users)
-    user_id_list = "" #c.data + "user_ids_rq3_gender_balanced.csv"
+    user_id_list = c.data + "user_ids_rq3_gender_balanced.csv"
     if suffix == "_demo":
         user_id_list = ""
     gender_balance_users(users, DV, suffix, user_id_list=user_id_list)

@@ -1,21 +1,13 @@
-# ToDo check which libraries do need and for what
 library(car) #vif function for collinearity checks
-#library(ggplot2)
-#library(gridExtra)
 library(languageR) # collinearity checks
-#library(Hmisc) # variable hierarchical clustering
-#library(matrixStats) # SD for multiple columns
-# install.packages("caret")
 library(caret) #confusionMatrix function for accuracy evaluation
-# library(mdscore) # log ratio test for glm https://rdrr.io/cran/mdscore/man/lr.test.html (lr.test yields almost same results as anova with Chisq)
-#library(flexmix) # BIC function for glm
 library(ROCR) # precision-recall curve for accuracy evaluation
 
 # references
 # Field: Field, A., Miles, J., & Field, Z. (2012). Discovering Statistics Using R. SAGE Publications Inc.
 
-data_folder = "data/" # "C:/Users/glori/Documents/Persönliches/#PhD_local/data/"
-dataset = "users_rq3-new.csv" # "users_rq3.csv", "users_rq3-new.csv" # "users_rq3-25wtotal.csv"
+data_folder = "data/"
+dataset = "users_rq3.csv"
 
 df = read.csv(paste(data_folder, dataset, sep=""), fileEncoding='UTF-8-BOM', sep=",")
 # number of cases
@@ -128,7 +120,7 @@ perf <- performance(pred, "prec", "rec")
 plot(perf, colorize=TRUE)
 
 ## gender-balanced dataset
-dataset = "users_rq3-new_gender_balanced.csv"
+dataset = "users_rq3_gender_balanced.csv"
 df = read.csv(paste(data_folder, dataset, sep=""), fileEncoding='UTF-8-BOM', sep=",")
 
 # number of cases
