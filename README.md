@@ -1,6 +1,6 @@
-# Code accompanying the paper "An exploratory analysis of posting patterns in peer online support forums and their associations with emotions and mood in bipolar disorder" 
+# Code accompanying the paper "Posting Patterns in Peer Online Support Forums and their Associations with Emotions and Mood in Bipolar Disorder: Exploratory Analysis" 
 
-This repository contains the code to reproduce all results from the paper Jagfeld, G., Lobban, F., Davies, R., Boyd, R. L., Rayson, P., & Jones, S. H. (submitted for publication) An exploratory analysis of posting patterns in peer online support forums and their associations with emotions and mood in bipolar disorder.
+This repository contains the code to reproduce all results from the paper Jagfeld, G., Lobban, F., Davies, R., Boyd, R. L., Rayson, P., & Jones, S. H. (submitted for publication) Posting Patterns in Peer Online Support Forums and their Associations with Emotions and Mood in Bipolar Disorder: Exploratory Analysis.
 
 The data provided in the data/ directory is only made-up example data to show the structure of the data and test the code release. To obtain the actual data, please contact Glorianna Jagfeld <g.jagfeld@lancaster.ac.uk> or Professor Steven Jones <s.jones7@lancaster.ac.uk>. You will be provided with a Data Usage Agreement outlining ethical terms of use for the data that you need to sign before getting access to the data. Please note, that access to the data will only be granted for non-commercial research purposes.
 
