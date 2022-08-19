@@ -7,12 +7,6 @@ The data provided in the data/ directory is only made-up example data to show th
 By default, the repository expects that the actual data is stored in the data/ subdirectory in the files posts.csv, users.csv, and posts_LIWC.csv.
 To run the code on the provided example data, use the optional demo flag for each of the scripts.
 
-For portability reasons, the dataset is provided in .csv format. However, reading the csv file of 21M posts can take up to 30 minutes. To speed this up, the data could be pickled and read from the .pkl instead of .csv file:
-
-```python
-posts = pd.read_csv(c.data + "posts.csv")
-posts.to_pickle(c.data + "posts.pkl")
-posts = pd.read_pickle(c.data + "posts.pkl")
 ```
 
 ## Requirements
