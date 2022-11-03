@@ -4,7 +4,7 @@ This repository contains the code to reproduce all results from the paper Jagfel
 
 The data provided in the data/ directory is only made-up example data to show the structure of the data and test the code release. To obtain the actual data, please contact Glorianna Jagfeld <g.jagfeld@lancaster.ac.uk> or Professor Steven Jones <s.jones7@lancaster.ac.uk>. You will be provided with a Data Usage Agreement outlining ethical terms of use for the data that you need to sign before getting access to the data. Please note, that access to the data will only be granted for non-commercial research purposes.
 
-By default, the repository expects that the actual data is stored in the data/ subdirectory in the files posts.csv, users.csv, and posts_LIWC.csv.
+By default, the repository expects that the actual data is stored in the data/ subdirectory in the files posts_meta.csv, users.csv, and posts_LIWC.csv.
 To run the code on the provided example data, use the optional demo flag for each of the scripts.
 
 ```

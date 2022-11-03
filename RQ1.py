@@ -6,8 +6,8 @@ import config as c
 import util as u
 
 suffix = u.get_suffix()
-print("Reading posts from %s" %(c.data + "posts%s.csv" %suffix))
-posts = pd.read_csv(c.data + "posts%s.csv" %suffix)
+print("Reading posts from %s" %(c.data + "posts_meta%s.csv" %suffix))
+posts = pd.read_csv(c.data + "posts_meta%s.csv" %suffix)
 print("Read in %d posts by %d users" % (len(posts), posts.user_id.nunique()))
 
 posts_by_users = posts.groupby("user_id")
