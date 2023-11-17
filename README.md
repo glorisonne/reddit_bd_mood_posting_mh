@@ -1,10 +1,10 @@
 # Code accompanying the paper "Posting Patterns in Peer Online Support Forums and their Associations with Emotions and Mood in Bipolar Disorder: Exploratory Analysis" 
 
-This repository contains the code to reproduce all results from the paper Jagfeld, G., Lobban, F., Davies, R., Boyd, R. L., Rayson, P., & Jones, S. H. (submitted for publication) Posting Patterns in Peer Online Support Forums and their Associations with Emotions and Mood in Bipolar Disorder: Exploratory Analysis.
+This repository contains the code to reproduce all results from the paper [Jagfeld, G., Lobban, F., Davies, R., Boyd, R. L., Rayson, P., & Jones, S. H. (2023) ‘Posting patterns in peer online support forums and their associations with emotions and mood in bipolar disorder: Exploratory analysis’, PLOS ONE, 18(9), p. e0291369.](https://doi.org/10.1371/journal.pone.0291369).
 
 The data provided in the data/ directory is only made-up example data to show the structure of the data and test the code release.
 You can request the actual data [here](https://doi.org/10.17635/lancaster/researchdata/589).
-Please note that you will need to provide the [data usage agreement](https://github.com/glorisonne/reddit_bd_mood_posting_mh/blob/02a72b2ae1810503de145f5e77bdff76bb8ab13e/data/DataUsageAgreement_SBiDDDataset.docx).
+Please note that you will need to provide the [data usage agreement](https://github.com/glorisonne/reddit_bd_mood_posting_mh/blob/main/data/DataUsageAgreement_SBiDDDataset.docx).
 Access to the data will only be granted for non-commercial research purposes.
 
 To reproduce the results of this study, you require the files posts_meta.csv, users.csv, and posts_LIWC.csv that 
